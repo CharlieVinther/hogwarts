@@ -68,22 +68,24 @@ function dropdownH(e) {
 
     console.log(e.target)
 
-    if (document.querySelector("#dropdownH").style.display == "none") {
-    document.querySelector("#dropdownH").style.display = "block"
+    if (document.querySelector("#dropdownH").style.display == "block") {
+    document.querySelector("#dropdownH").style.display = "none"
 
     } else {
-        document.querySelector("#dropdownH").style.display = "none"
-        console.log("set none")
+        document.querySelector("#dropdownH").style.display = "block"
+        document.querySelector("#dropdownR").style.display = "none"
+        console.log("set block")
     }
 
 }
 
 function dropdownR() {
-    if (document.querySelector("#dropdownR").style.display == "none") {
-        document.querySelector("#dropdownR").style.display = "block"
+    if (document.querySelector("#dropdownR").style.display == "block") {
+        document.querySelector("#dropdownR").style.display = "none"
     
     } else {
-            document.querySelector("#dropdownR").style.display = "none"
+            document.querySelector("#dropdownR").style.display = "block"
+            document.querySelector("#dropdownH").style.display = "none"
     }
 }
 
@@ -408,12 +410,16 @@ function togglePrefect(student) {
 
     if (student.prefect === true) {
         student.prefect = false;
+        document.querySelector(".prefect_popup").textContent = "false";
+
     } else if (prefectsHouse.length === 2) {
         console.log("too many");
         alert(`There can onlye be 2 prefects per house. The current prefect of this house are ${prefectsHouse[0].fullname} and ${prefectsHouse[1].fullname}`)
     } else {
         console.log("true")
         student.prefect = true;
+        document.querySelector(".prefect_popup").textContent = "true";
+
     }
 
 
@@ -422,9 +428,12 @@ function togglePrefect(student) {
 function toggleSquad(student) {
 
     if (student.squad === true) {
+        document.querySelector(".squad_popup").textContent = "false";
+
         student.squad = false;
     } else if (student.blood === "pure") {
         student.squad = true;
+        document.querySelector(".squad_popup").textContent = "true";
     } else {
         alert("This student can NOT join the Inquisitorial Squad! Yours, Umbridge 😺")
     }
